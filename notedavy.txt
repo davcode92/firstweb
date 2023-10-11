@@ -1,0 +1,365 @@
+Premiers pas avec Git
+------------------------
+Nous pouvons imaginer que la conception Web est comme un bâtiment et que Git est l’un des nombreux piliers importants sur lesquels repose la conception Web.
+Nos principaux objectifs à l'heure actuelle sont les suivants :
+
+.Comprendre ce qu'est Git
+.Apprenez à utiliser les commandes Git de base
+.Découvrez comment configurer Git
+.Comprendre ce qu'est Github et comment travailler avec des référentiels distants
+________________________________________________________________________________
+Qu'est-ce qu'un VCS ?
+-----------------------
+Un système de contrôle de version est un outil logiciel qui aide les équipes de développeurs à suivre et à gérer les modifications du code source au fil du temps.
+
+Lorsque vous modifiez et ajoutez à votre code,
+ vous demandez au système de contrôle de version de prendre un instantané de vos fichiers ou d'enregistrer un point de contrôle de votre progression.
+Le système de contrôle de version enregistre cet instantané de manière permanente afin que vous puissiez le rappeler plus tard si vous en avez besoin.
+
+Sans VCS, vous êtes tenté de conserver plusieurs copies de code sur votre ordinateur.
+Ceci est dangereux car il est facile pour un fichier d’être corrompu ou supprimé, ce qui signifie que vous risquez de perdre des mois, voire des années, de travail.
+
+Les systèmes de contrôle de version résolvent ce problème en vous présentant toutes les versions de votre code avec un historique clair des modifications apportées.
+Cela vous permet de revenir aux anciennes versions du code et d'essayer une approche différente.
+___________________________________________________________________________________________
+Qu’est-ce que Git ?
+-------------------
+Git est un VCS gratuit et open source conçu pour gérer tout, des petits aux très grands projets, avec rapidité et efficacité.
+En clair, Git est un outil qui permet aux développeurs de suivre les versions de leur code au fil du temps. Pour ce faire,
+il crée des « instantanés » de l’état actuel de la base de code chaque fois que vous le lui demandez.
+
+Git est essentiel lors de la collaboration avec d'autres développeurs 
+pour garantir qu'il n'y a pas de conflits de code entre eux et que les « instantanés » précédents du code peuvent être revisités si nécessaire.
+
+Par exemple, si vous codez et que vous cassez ou plantez accidentellement l’application, 
+vous venez de perdre toute votre progression et vous êtes obligé de repartir de zéro.
+Cependant, c'est plus simple et plus sûr si vous utilisez Git et vous pouvez simplement revenir à une version précédente du code.
+
+vidéo explicative:https://youtu.be/1GyYr528VhY?list=PL-w_yrNy8uTam5zYatOodamOW9-J9lHb_
+_____________________________________________________________________________________________
+
+Commencez à utiliser Git :
+-------------------------
+Une fois Git installé, nous devons "initialiser" un référentiel avant de pouvoir commencer à l'utiliser.
+C’est très simple à faire, suivez simplement mon exemple :
+
+.créer un dossier avec la commande mkdir + espace+ nom du dossier.
+ex: mkdir crocode
+
+
+.Pour créer un dépôt, utilisez la commande git init . 
+git init est une commande unique que vous utilisez durant la configuration initiale du nouveau dépôt. 
+Lorsque vous exécutez cette commande, un sous-répertoire . git est créé dans votre répertoire de travail actuel.
+
+.cd: La commande cd vous permet de changer de répertoire (cd = change directory). 
+Quand vous ouvrez un terminal en mode utilisateur vous êtes dans votre répertoire personnel (/home/utilisateur). 
+Contrairement à la version Windows la commande cd utilisée seule ramène au répertoire par défaut de l'utilisateur (ou du root) ...
+ex: cd Gitws
+
+
+.La commande touch de Linux est principalement utilisée pour créer des fichiers vides,
+ et modifier le timestamp (horodatage) de fichiers ou de dossiers. 
+Les informations d'horodatage des fichiers se composent de trois attributs : l'heure d'accès, l'heure de modification et l'heure de changement.
+ex:touch file.txt
+
+.La commande git config est une fonction pratique utilisée pour définir des valeurs de configuration Git au niveau global
+ ou local d'un projet. Ces niveaux de configuration correspondent aux fichiers texte . gitconfig .
+ L'exécution de git config modifiera un fichier texte de configuration.
+ex:paramétrer votre nom et votre adresse de courriel :
+
+$ git config --global user.name "John Doe"
+$ git config --global user.email "johndoe@example.com"
+
+
+Si vous souhaitez vérifier vos réglages, vous pouvez utiliser
+la commande git config --list pour lister tous les réglages que Git a pu trouver jusqu'ici :
+$ git config --list user.name=John Doe user. email=johndoe@example.com color. status=auto color.
+ex:git config --list
+
+.La commande git init crée un nouveau dépôt Git. 
+Elle permet de convertir un projet existant, sans version en un dépôt Git ou d'initialiser un nouveau dépôt vide.
+ex:git init.
+
+.La commande "git add ." accepte en paramètre un chemin qui correspond à un fichier ou un répertoire;
+dans le cas d'un répertoire, la commande ajoute récursivement tous les fichiers de ce répertoire.
+
+ex:"git add ."
+
+.Pour vérifier l'état actuel de votre référentiel, nous utilisons la commande git status.
+ex:git status.
+
+Voici comment utiliser le git:
+----------------------------
+git init
+
+git add .
+
+git status
+
+git commit -m 'first commit'
+
+git remote add origin YOUR_REMOTE_URL
+
+git push -u origin master
+
+______________________________________________________________________________________________
+Statut du fichier
+Git considère chaque fichier de votre copie de travail comme l'une des trois choses suivantes :
+
+Suivi :
+Un fichier qui a été préalablement préparé ou validé.
+Non suivi :
+Un fichier qui n’a pas été préparé ou validé.
+Ignoré :
+Un fichier que Git doit explicitement ignorer.
+
+Les fichiers ignorés sont généralement des artefacts construits et des fichiers générés 
+par la machine qui peuvent être dérivés de la source de votre référentiel ou qui ne devraient pas être validés autrement.
+
+PS : Si nous avons un fichier que nous ne voulons pas suivre, nous le mettons simplement dans le fichier .gitignore.
+
+Paramètres de configuration
+Le fichier .gitconfig contient une liste de configurations qui affectent le comportement des commandes git.
+ Donc afin de le manipuler, nous utilisons la commande git config <configuration>. Par conséquent, 
+pour modifier le nom et l'e-mail utilisés par Git pour identifier l'utilisateur, nous exécutons la commande suivante : 
+git config --global user.name "YOUR NAME"
+git config --global user.email "YOUR EMAIL"(Définissez l'e-mail de l'utilisateur comme vous le souhaitez)
+
+_________________________________________________________________________________________________
+Alias ​​Git:
+Souvent, vous vous retrouverez à taper des commandes git encore et encore. Par exemple, 
+git add, git init et git status sont des commandes que vous utiliserez à plusieurs reprises.
+La chose intelligente à faire dans ce cas est d’utiliser un raccourci ou un alias. 
+Les alias contribuent à rendre votre expérience Git plus simple, plus facile et plus familière.
+Pour créer un alias temporaire, qui durera aussi longtemps que votre session de terminal sera ouverte, vous pouvez taper :
+
+git config alias.COMMANDE KEYBOARD_SHORTCUT
+Donc, si nous voulions taper git st et le faire fonctionner comme git status, nous taperions git config alias.st status.
+ Nous pouvons maintenant taper git st et avoir le même résultat que si nous tapions git status.
+
+Si vous souhaitez que votre alias fasse partie de votre configuration globale, ajoutez la commande --global après git config. 
+Par exemple, pour alias git i en git init globalement, vous devez taper git config --global alias.i init.
+
+.Le" .gitignore" est un fichier contenant une liste de fichiers que git ne suivra pas.
+________________________________________________________________________________________________
+Qu’est-ce que GitHub ?
+--------------------
+GitHub est un service d'hébergement de référentiel Git basé sur le Web.
+En termes simples, il s'agit d'un outil qui permet la collaboration en hébergeant des référentiels
+ Git partagés auxquels les équipes de développeurs peuvent toutes contribuer.
+Bien que GitHub utilise Git, les fonctionnalités qu'il fournit sont totalement différentes de Git.
+ Essayez donc de vous rappeler que Git et GitHub ne sont pas la même chose.
+____________________
+En bref, Git est un système de contrôle de version tandis que GitHub est une plateforme en ligne 
+pour héberger et partager du code, des fichiers texte et des formats de fichiers plus complexes.GitHub
+est une entreprise à but lucratif qui propose une solution basée sur le cloud Git
+service d'hébergement de référentiel. Essentiellement, cela permet aux individus et aux équipes d'utiliser beaucoup plus facilement Git pour
+Contrôle de version et Collaboration
+L'interface de GitHub est suffisamment conviviale pour que même les codeurs débutants puissent profiter de Git.
+Sans GitHub,l'utilisation de Git nécessite généralement un peu plus d'intelligence technique et une utilisation intensive de la ligne de commande.
+_______________________________________________________________________________________________________________________
+Pushing Code to GitHub:
+After creating a repository in GitHub, we need to add our local code (after commits) 
+to the remote repo. It’s very simple. First, we need to attach the address 
+of the GitHub repo to our local project, simply by running git remote add origin YOUR_REPO_URL.
+
+___________________________________________________________________________________________________________
+Fork:
+Now that we know how to push code to GitHub, let's explore one of GitHub’s important features: forking.
+
+When collaborating with others you’re unable to push directly 
+to the original repository (Imagine if you could play with one of the world’s largest open source projects and repositories… that would be insane).
+
+So the logical thing to do is make a copy of someone else's remote repository and make sure it is under our username so that we can push code to it.
+This ensures that our experimenting with the repository doesn’t affect the original version.
+
+To practice forking, head over to any repo on github and on the top right you will see a button with the text Fork.
+ Click on this button and you will have a copy of the repository under your name!
+
+Remember, "forking" is strictly a GitHub feature and it is not by any means related to Git. 
+It is simply a way to make your own copy of a repository on your account where you have permission to push your code to GitHub.
+_________________________________________________________________________________________________________________________
+Clone:
+Once you have applied “forking” on the repository, you need to select it (the remote one you just made) 
+and download the code on your local computer (i.e. make a local repository). 
+Instead of making a folder and going through the whole git init process and adding a remote,
+you can conveniently use the git clone command, which accepts a link to the repository and downloads it into a folder (with everything already set up!).
+In order to do this, click on the button clone and that will provide us with a remote URL. Then just copy the URL.
+In the terminal, just run git clone THE_COPYED_ADDRESS.
+___________________________________________________________________________________________________________________________
+Pull Request:
+Now let's say you are collaborating with an organization on GitHub (where you forked the repository from) and you would like
+ to merge your changes with the original repo that you forked (remember you can't just push to it, because you do not have permission to do so).
+ You can issue a pull request and the person who can grant permission can either merge or reject it.
+
+To do this, click on "New pull request” and then click on "Create pull request".
+ You should then be able to go to the original repository and see your pull request or "PR".
+___________________________________________________________________________________________________________________________
+A fork is a copy of a repository. Forking a repository allows you to freely experiment without affecting the original project.
+If you have made changes and you want to add them and contribute to the project, all you have to do is issue a pull request.
+This is where you send the proposed changes to the owner of the project. After reviewing your request, she/he can either merge 
+it to the master repository or reject your request.
+
+vidéo explicative: https://youtu.be/MjOGLJDkLos
+_________________________________________________________________________________________________________
+
+Git Basics Exercise:
+1-Create a folder called learn_git_again.
+mkdir learn_git_again
+2-cd into the learn_git_again folder.
+cd learn_git_again
+3-Create a file called third.txt.
+touch third.txt
+4-Initialize an empty git repository.
+git init
+4-Add third.txt to the staging area.
+git add third.txt
+5-Commit with the message "adding third.txt".
+git commit -m "adding third.txt"
+6-Check out your commit with git log.
+git log
+7-Create another file called fourth.txt.
+touch fourth.txt
+8-Add fourth.txt to the staging area.
+git add fourth.txt
+9-Commit with the message "adding fourth.txt"
+git commit -m "adding fourth.txt"
+10-Remove the third.txt file.
+rm third.txt
+11-Add this change to the staging area.
+git add third.txt
+12-Commit with the message "removing third.txt".
+git commit -m "removing third.txt"
+13-Check out your commits using git log.
+git log
+14-Change your global setting to core.pager=cat - you can read more about that here.
+git config --global core.pager "cat"
+15-Write the command to list all of the global configurations for git on your machine. 
+You can type git config --global to find out how to do this
+
+- git config --global --list
+
+from nidda
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
